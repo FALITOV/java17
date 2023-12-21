@@ -44,6 +44,26 @@ public class MovieManagerTest {
         String[] expected = {"Бладшот", "Отель Белград", "Джентельмены", "Номер один", "Вперед", "Хроники Риддика"};
         String[] actual = manager.findAll();
         Assertions.assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    public void moreLastUnderLimit() {
+        MovieManager manager = new MovieManager(7);
+        manager.addMovie("Бладшот");
+        String[] expected = {"Бладшот"};
+        String[] actual = manager.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void moreLastMoreLimit() {
+        MovieManager manager = new MovieManager(1);
+        manager.addMovie("Бладшот");
+        manager.addMovie("Проклятье");
+        String[] expected = {"Проклятье"};
+        String[] actual = manager.findLast();
+        Assertions.assertArrayEquals(expected, actual);
     }
 
 }
