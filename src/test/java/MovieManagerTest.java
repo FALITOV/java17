@@ -66,4 +66,14 @@ public class MovieManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void equalLastLimit() {
+        MovieManager manager = new MovieManager(2);
+        manager.addMovie("Бладшот");
+        manager.addMovie("Проклятье");
+        String[] expected = {"Проклятье", "Бладшот"};
+        String[] actual = manager.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
 }
